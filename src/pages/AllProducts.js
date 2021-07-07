@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import classes from './AllProducts.module.css';
 
-
 const AllProductsPage = () => {
-    const [cat, setCat] = useState([]);
+    const [cat, setCat] = useState([]);   
     const [loading, setLoading] = useState(true);
+
+// *E
+    const [cart, setCart] = useState([]);
+
+// *E
+const addToCart = (Cat) => {
+    console.log("we are in add to cart");
+    setCart([...cart, Cat]);
+}
   
     useEffect(() => {
       onLoad();
@@ -61,11 +69,12 @@ const AllProductsPage = () => {
       }
       return (
         <div className={classes.info}>
-          <p>Cat Name Here</p>
+          <p>{catNames.name}</p>
           <p>{Info.name}</p>
           {/* these don't work and crash the page - need to get array data to display */}
           <p>Cat Price Here</p>
           <p>£{Info.price}</p>
+          <button className={classes.btn} onClick={() => addToCart(Cat)}>Add kitty!</button>
         </div>
       );
     };
@@ -75,11 +84,15 @@ const AllProductsPage = () => {
     }
     return (
       <div>
-        <h1 className={classes.allProductsTitle}>Cats - So Many Cats</h1>
+        {/* <h1 className={classes.allProductsTitle}>Cats - So Many Cats</h1> */}
         <Cat />
       </div>
     );
-  };
+
+
+
+
+};
   
   export default AllProductsPage;
   

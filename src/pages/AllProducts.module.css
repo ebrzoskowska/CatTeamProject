@@ -1,16 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Faustina:wght@700&family=Tajawal&display=swap');
-html,body{
-  font-family: 'Tajawal', sans-serif;
-}
-
 
 .allProductsTitle {
     text-align: center;
-}
-  
-.allProductsImages {
-    height: auto;
-    width: 200px;
+    font-family: 'Faustina', serif;
 }
   
 .cats {
@@ -19,15 +11,48 @@ html,body{
     align-items: center;
     justify-content: center;
 }
-  
-  
+   
 .catPics {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    padding: 10px;
+    padding: 5px;   
+}
+
+.allProductsImages {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: center;
 }
   
 .info {
     text-align: center;
+    font-family: 'Tajawal', sans-serif;
 }
+
+.btn {
+    font: inherit;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #800040;
+    color: white;
+    border: 1px solid #800040;
+    margin: 0 1rem;
+  }
+  
+  .btn:hover {
+    background-color: #9c1458;
+    border-color: #9c1458;
+  }
+  
+  .btn--alt {
+    background-color: transparent;
+    color: #800040;
+  }
+  
+  .btn--alt:hover {
+    background-color: #f8dae9;
+  }
+  
