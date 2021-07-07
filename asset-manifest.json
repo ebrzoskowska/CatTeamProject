@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/CatTeamProject/static/css/main.69175a48.chunk.css",
+    "main.js": "/CatTeamProject/static/js/main.ff965220.chunk.js",
+    "main.js.map": "/CatTeamProject/static/js/main.ff965220.chunk.js.map",
+    "runtime-main.js": "/CatTeamProject/static/js/runtime-main.afaa75c7.js",
+    "runtime-main.js.map": "/CatTeamProject/static/js/runtime-main.afaa75c7.js.map",
+    "static/js/2.e17335ba.chunk.js": "/CatTeamProject/static/js/2.e17335ba.chunk.js",
+    "static/js/2.e17335ba.chunk.js.map": "/CatTeamProject/static/js/2.e17335ba.chunk.js.map",
+    "index.html": "/CatTeamProject/index.html",
+    "static/css/main.69175a48.chunk.css.map": "/CatTeamProject/static/css/main.69175a48.chunk.css.map",
+    "static/js/2.e17335ba.chunk.js.LICENSE.txt": "/CatTeamProject/static/js/2.e17335ba.chunk.js.LICENSE.txt",
+    "static/media/logo.5e57f963.svg": "/CatTeamProject/static/media/logo.5e57f963.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.afaa75c7.js",
+    "static/js/2.e17335ba.chunk.js",
+    "static/css/main.69175a48.chunk.css",
+    "static/js/main.ff965220.chunk.js"
+  ]
+}
