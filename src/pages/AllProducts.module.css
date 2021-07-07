@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Faustina:wght@700&family=Tajawal&display=swap');
+html,body{
+  font-family: 'Tajawal', sans-serif;
+}
+
+
+.allProductsTitle {
+    text-align: center;
+}
+  
+.allProductsImages {
+    height: auto;
+    width: 200px;
+}
+  
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+  
+  
+.catPics {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px;
+}
+  
+.info {
+    text-align: center;
+}

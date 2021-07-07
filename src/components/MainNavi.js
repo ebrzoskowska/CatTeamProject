@@ -13,10 +13,10 @@ function MainNavi () {
             <nav>
                 <ul>
                     <li>
-                        <Link to='/'>All Products</Link>
+                        <Link to='/'>ALL PRODUCTS</Link>
                     </li>
                     <li>
-                        <Link to='/cart'>Cart</Link>
+                        <Link to='/cart'>CART</Link>
                     </li>
                 </ul>
             </nav>
