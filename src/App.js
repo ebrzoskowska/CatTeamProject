@@ -11,7 +11,7 @@ function App() {
           <AllProductsPage />
         </Route>
         <Route path='/cart'>
-            <CartPage />
+          <CartPage />
         </Route>
       </Switch>
     </Layout>

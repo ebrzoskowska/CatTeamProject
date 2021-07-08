@@ -2,97 +2,47 @@ import { useState, useEffect } from "react";
 import classes from './AllProducts.module.css';
 
 const AllProductsPage = () => {
-    const [cat, setCat] = useState([]);   
-    const [loading, setLoading] = useState(true);
 
-// *E
-    const [cart, setCart] = useState([]);
+// empty array for cats info
+  const [info, setInfo] = useState([]);
 
-// *E
-const addToCart = (Cat) => {
-    console.log("we are in add to cart");
-    setCart([...cart, Cat]);
-}
+// fetch info from cats API and store them in empty array data
+  const infoFetch = async () => {
+    const response = await fetch("https://api.thecatapi.com/v1/breeds?limit=20&page=0");
+    const info = await response.json();
+    setInfo(info)
+}   
   
-    useEffect(() => {
-      onLoad();
-    }, []);
-  
-    const catNames = [
-      "Waffles",
-      "Ferdinand",
-      "Buttons",
-      "Jessica",
-      "Mulder",
-      "Scully",
-      "Shoelace",
-      "Snickers"
-    ];
-    const catPrices = [20, 50, 20, 40, 35, 25, 60];
-  
-    const onLoad = () => {
-      fetch("https://api.thecatapi.com/v1/images/search?limit=20")
-        .then((response) => response.json())
-        .then((data) => {
-          setCat(data);
-          setLoading(false);
-        });
-    };
-  
-    const Cat = () => {
-      return (
-        <div>
-          <div className={classes.cats}>
-            {cat.map((item) => {
-              return (
-                <div>
-                  <div className={classes.catPics}>
-                    <img className={classes.allProductsImages} src={item.url} alt="cat"></img>
-                  </div>
-                  <Info />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      );
-    };
-  
-    const Info = () => {
-      for (let i = 0; i < catNames.length; i++) {
-        let name = catNames[i];
-        console.log(name);
-      }
-      for (let i = 0; i < catPrices.length; i++) {
-        let price = catPrices[i];
-        console.log(price);
-      }
-      return (
-        <div className={classes.info}>
-          <p>{catNames.name}</p>
-          <p>{Info.name}</p>
-          {/* these don't work and crash the page - need to get array data to display */}
-          <p>Cat Price Here</p>
-          <p>£{Info.price}</p>
-          <button className={classes.btn} onClick={() => addToCart(Cat)}>Add kitty!</button>
-        </div>
-      );
-    };
-  
-    if (loading) {
-      return <h1>Loading...</h1>;
-    }
+// useEffect trigger infoFetch to fetch images from Api after page onload
+  useEffect(() => {
+    infoFetch()
+  }, [])
+
+// map method looping throug array ofcat images
+  const CatPics = () => {
     return (
-      <div>
-        {/* <h1 className={classes.allProductsTitle}>Cats - So Many Cats</h1> */}
-        <Cat />
-      </div>
+    <div className={classes.cats}>  
+        {info.map((item) => {
+            return (
+                <div className={classes.catPics}>
+                    <img className={classes.allProductsImages} src={item.image.url} alt="cat"></img>
+                    <p  className={classes.info}>name: {item.name}</p>
+                    <p className={classes.info}>origin: {item.origin}</p>
+                    <p className={classes.info}>£{item.image.width}</p>
+                    <button className={classes.btn} >Add kitty!</button>
+                </div>
+            );
+        })}
+    </div> 
     );
-
-
-
-
+  };   
+  
+// return images from data array    
+return (
+  <div>          
+      <CatPics />        
+    </div>
+  ); 
 };
   
-  export default AllProductsPage;
-  
+export default AllProductsPage;
