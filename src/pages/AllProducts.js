@@ -63,8 +63,8 @@ const AllProductsPage = () => {
 
 const Panel = () => {
 
-const totalPrice = price + price;
-setTotalPrice(totalPrice)
+const totalPrice = price;
+setTotalPrice(totalPrice) // need to work out how to update price etc. when a second cat is added
 
   return( 
    <div className="cart" style={showCart ? {} : {display: 'none'}}>  
@@ -73,7 +73,7 @@ setTotalPrice(totalPrice)
     <p>{name}</p>
     <p>{origin}</p>
     <p>£{price}</p>
-    <h3>Total Price: {totalPrice}</h3>
+    <h3>Total Price: £{totalPrice}</h3>
   </div>
   )
 }
