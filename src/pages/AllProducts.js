@@ -70,16 +70,15 @@ for (let i = 0; i < price.length; i++) {
   newPrice = newPrice + price[i]; 
   setTotalPrice(newPrice) 
 }
-
   return( 
-    
    <div className="cart" style={showCart ? {} : {display: 'none'}}>  
    {/* style stops it appearing when empty using showCart useState */}
     <h2>Your Cart</h2>
+    <h3>Your Selected Kitties:</h3>
     <p>Breed: {name + ", "}</p>
     <p>Origin: {origin + ", "}</p>
-    <p>{"£" + price + ", "}</p>
-    <h3>Total: £{totalPrice}</h3>
+    <p>Prices: {price + ", "}</p>
+    <h3>Total Price: £{totalPrice}</h3>
   </div>
   )
 }
