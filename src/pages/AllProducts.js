@@ -14,12 +14,13 @@ const AllProductsPage = () => {
     setInfo(info)
 }   
  
-  const [name, setName] = useState("");
-  const [origin, setOrigin] = useState("");
-  const [price, setPrice] = useState();
+  const [name, setName] = useState([]);
+  const [origin, setOrigin] = useState([]);
+  const [price, setPrice] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
 
   const [showCart, setShowCart] = useState(false);
+
 
 // useEffect trigger infoFetch to fetch images from Api after page onload
   useEffect(() => {
@@ -40,16 +41,16 @@ const AllProductsPage = () => {
                 
                 <div className={classes.catPics}>
                     <img className={classes.allProductsImages} src={item.image.url} alt="cat"></img>
-                    <p  className={classes.info}>name: {item.name}</p>
-                    <p className={classes.info}>origin: {item.origin}</p>
+                    <p  className={classes.info}>Breed: {item.name}</p>
+                    <p className={classes.info}>Origin: {item.origin}</p>
                     <p className={classes.info}>£{item.image.width}</p>
                     <button className={classes.btn} onClick={() => 
-                    {const name = item.name;  // I know this is messy - I put it here because when it was in its own function it wasn't accessing the values
-                      setName(name); 
-                      const origin = item.origin;
-                      setOrigin(origin); 
-                      const price = item.image.width;
-                      setPrice(price); 
+                    {const newName = item.name;  // I know this is messy - I put it here because when it was in its own function it wasn't accessing the values
+                      setName(name => [...name, newName]); 
+                      const newOrigin = item.origin;
+                      setOrigin(origin => [...origin, newOrigin]); 
+                      const newPrice = item.image.width;
+                      setPrice(price => [...price, newPrice]); 
                       setShowCart(true);
                     }}>Add kitty!</button>
                 </div>
@@ -63,17 +64,22 @@ const AllProductsPage = () => {
 
 const Panel = () => {
 
-const totalPrice = price;
-setTotalPrice(totalPrice) // need to work out how to update price etc. when a second cat is added
+ let newPrice =  0;
+
+for (let i = 0; i < price.length; i++) {
+  newPrice = newPrice + price[i]; 
+  setTotalPrice(newPrice) 
+}
 
   return( 
+    
    <div className="cart" style={showCart ? {} : {display: 'none'}}>  
    {/* style stops it appearing when empty using showCart useState */}
     <h2>Your Cart</h2>
-    <p>{name}</p>
-    <p>{origin}</p>
-    <p>£{price}</p>
-    <h3>Total Price: £{totalPrice}</h3>
+    <p>Breed: {name + ", "}</p>
+    <p>Origin: {origin + ", "}</p>
+    <p>{"£" + price + ", "}</p>
+    <h3>Total: £{totalPrice}</h3>
   </div>
   )
 }
