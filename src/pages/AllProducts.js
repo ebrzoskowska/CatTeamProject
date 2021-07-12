@@ -40,7 +40,7 @@ const AllProductsPage = () => {
    );
  };
 
-//
+// function which will change pages cart/all products
   const navigateTo = (nextPage) => {
     setPage(nextPage); 
   };
@@ -58,7 +58,7 @@ const AllProductsPage = () => {
     )
   }
 
-// map method looping throug array of cats images
+// map method looping throug array of cats info
   const CatPics = () => {
     return (
     <div className={classes.cats}>  
