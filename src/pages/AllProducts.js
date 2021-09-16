@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import classes from './AllProducts.module.css';
 import logo from '../components/logo.svg';
+import Cats from "./Cats";
+import Cart from "./Cart";
 
 const PAGE_PRODUCT = 'products';
 const PAGE_CART = 'cart';
@@ -40,6 +42,11 @@ const AllProductsPage = () => {
    );
  };
 
+// funtion which will clear all cats from the cart
+  const clearAll = () => {
+    setCart([]);
+  };
+
 //
   const navigateTo = (nextPage) => {
     setPage(nextPage); 
@@ -48,60 +55,26 @@ const AllProductsPage = () => {
 // header with logo
   const Header = () => {
     return (
-        <header className={classes.header}>
-            <div className={classes.logo}>
-                <img src={logo} alt="Logo" />
-            </div>
-            <button onClick={() => navigateTo(PAGE_PRODUCT)} className={classes.btn}>ALL PRODUCTS</button>
-            <button onClick={() => navigateTo(PAGE_CART)} className={classes.btn}>GO TO CART ( {cart.length} )</button>
-        </header>
+      <header className={classes.header}>
+        <div className={classes.logo}>
+          <img src={logo} alt="Logo" />
+        </div>
+        <button onClick={() => navigateTo(PAGE_PRODUCT)} className={classes.btn}>ALL PRODUCTS</button>
+        <button onClick={() => navigateTo(PAGE_CART)} className={classes.btn}>GO TO CART ( {cart.length} )</button>
+      </header>
     )
   }
 
-// map method looping throug array of cats images
-  const CatPics = () => {
-    return (
-    <div className={classes.cats}>  
-        {info.map((item, index) => {
-            return (
-                <div className={classes.catPics} key={index}>
-                    <img className={classes.allProductsImages} src={item.image.url} alt="cat"></img>
-                    <p  className={classes.info}>name: {item.name}</p>
-                    <p className={classes.info}>origin: {item.origin}</p>
-                    <p className={classes.info}>£{item.image.width}</p>
-                    <button onClick={() => addToCart(item)} className={classes.btn} >Add kitty!</button>
-                </div>
-            );
-        })}
-    </div> 
-    );
-  };   
-
-// map method looping throug array of cats images
-  const Cart = () => {
-    return (
-    <div className={classes.cats}>  
-        {cart.map((item, index) => {
-            return (
-              <div className={classes.catPics} key={index}>
-                <img className={classes.allProductsImages} src={item.image.url} alt="cat"></img>
-                  <p  className={classes.info}>name: {item.name}</p>
-                  <p className={classes.info}>origin: {item.origin}</p>
-                  <p className={classes.info}>£{item.image.width}</p>
-                  <button onClick={() => removeFromCart(item)} className={classes.btn} >Remove</button>
-              </div>
-            );
-        })}
-    </div> 
-    );
-};     
- 
 // return images from data array    
 return (
   <div>    
     <Header />      
-    {page === PAGE_PRODUCT && CatPics()}
-    {page === PAGE_CART && Cart()}
+    {page === PAGE_PRODUCT && (
+      <Cats addToCart={addToCart} info={info} />
+    )}
+    {page === PAGE_CART && (
+      <Cart removeFromCart={removeFromCart} clearAll={clearAll} cart={cart} />
+    )}
   </div>
   ); 
 };

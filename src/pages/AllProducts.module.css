@@ -3,6 +3,13 @@ html,body{
   font-family: 'Tajawal', sans-serif;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
 .header {
   font-family: 'Faustina', serif;
   height: 5rem;
@@ -68,27 +75,43 @@ html,body{
 }
 
 .btn {
-    font: inherit;
-    padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: #000;
-    color: white;
-    border: 1px solid #000;
-    margin: 0 1rem;
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #000;
+  color: white;
+  border: 1px solid #000;
+  margin: 0 1rem;
+  width: fit-content;
+  align-self: center;
 }
   
 .btn:hover {
-    background-color: #9c1458;
-    border-color: #9c1458;
-  }
+  background-color: #9c1458;
+  border-color: #9c1458;
+}
   
-  .btn--alt {
-    background-color: transparent;
-    color: #800040;
+@media (max-width: 480px) {
+
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
-  .btn--alt:hover {
-    background-color: #f8dae9;
+
+  .logo {
+    display: none;
   }
-  
+
+  .btn {
+    padding: .5rem .5rem;
+    margin-bottom: 3vw;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+
+  .logo {
+    width: 20%;
+  }
+}
